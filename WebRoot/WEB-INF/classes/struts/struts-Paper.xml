@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+       
+<struts>
+
+	<package name="Paper" namespace="/" extends="my-default">
+	
+	<action name="queryAllPaper" class="PaperAction" method="queryPaperBypage">
+		<result>page_Admin/exam/paperManage.jsp</result>
+	</action>
+	<action name="queryPaperbyCondition" class="PaperAction" method="queryPaperBypage">
+		<result>page_Admin/exam/paperManage.jsp</result>
+	</action>
+	<action name="savePaper" class="PaperAction" method="savepaper">
+		<result type="chain">queryAllPaper</result>
+	</action>
+	<action name="query_paper_content" class="PaperAction" method="query_paper_content">
+		<result>page_Admin/exam/paperContent.jsp</result>
+	</action>
+	<action name="newPaper" class="PaperAction" method="newPaper">
+		<result>page_Admin/exam/newPaper.jsp</result>
+	</action>
+	<action name="savePaper" class="PaperAction" method="savePaper">
+		<result type="chain">queryAllPaper</result>
+	</action>
+	<action name="deletePaper" class="PaperAction" method="deletePaper">
+		<result type="chain">queryAllPaper</result>
+	</action>
+	
+	<action name="queryMyPaper" class="PaperAction" method="querymypaper">
+		<result>page_Staff/Myexam.jsp</result>
+	</action>
+	<action name="beginExam" class="PaperAction" method="beginExam">
+		<result>page_Staff/beginExam.jsp</result>
+	</action>
+	</package>
+</struts>

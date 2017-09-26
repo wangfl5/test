@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.custom.i18n.resources" value="fileupload"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectFactory " value="spring"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.devMode" value="true"/>
+	<include file="struts/struts-LoginInterceptor.xml"></include>
+	<include file="struts/struts-Staff.xml"></include>
+	<include file="struts/struts-TrainPlan.xml"></include>
+	<include file="struts/struts-Subject.xml"></include>
+	<include file="struts/struts-Paper.xml"></include>
+	<include file="struts/struts-Result.xml"></include>
+	<include file="struts/struts-Question.xml"></include>
+</struts>

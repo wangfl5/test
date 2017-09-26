@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="StaffDao" class="exam.Dao.Impl.StaffDaoImpl">
+		<property name="hibernateTemplate">
+  			<ref bean="hibernateTemplate"/>
+  		</property>
+	</bean>
+	<bean id="StaffService" class="exam.Service.Impl.StaffServiceImpl">
+		<property name="commonDao">
+			<ref bean="StaffDao" />
+		</property>
+		<property name="staffdao">
+			<ref bean="StaffDao"/>
+		</property>
+	</bean>
+	
+	<bean id="StaffAction" class="exam.action.StaffAction">
+		<property name="staffservice">
+			<ref bean="StaffService"/>
+		</property>
+	</bean>
+    <bean id="StaffManageAction" class="exam.action.StaffManageAction">
+    	<property name="staffservice">
+    		<ref bean="StaffService"/>
+    	</property>
+    </bean> 
+    <bean id="CreateImageAction" class="exam.action.CreateImageAction"></bean>
+</beans>

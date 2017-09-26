@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="exam.domain.Staff" table="staff">
+		<id name="staff_id" column="staff_id" length="10">
+		</id>
+		<property name="password" length="20" type="java.lang.String"></property>
+		<property name="staff_name" length="20" type="java.lang.String"></property>
+		<property name="email" length="40" type="java.lang.String"></property>
+		<property name="worktime" length="20" type="java.sql.Date"></property>
+		<property name="job" length="40" type="java.lang.String"></property>
+		<property name="staff_desc" length="40" type="java.lang.String"></property>
+		<property name="isAdmin" length="20" type="java.lang.String"></property>
+	</class>
+</hibernate-mapping>

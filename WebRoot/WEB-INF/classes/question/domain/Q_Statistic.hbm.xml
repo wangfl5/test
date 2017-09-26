@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="question.domain.Q_Statistic" table="q_statistic">
+		<id name="qs_id" column="qs_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="q_id" length="10" type="integer"></property>
+		<property name="staff_id" length="10" type="integer"></property>
+	</class>
+</hibernate-mapping>

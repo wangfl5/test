@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="question.domain.Q_subject" table="q_subject">
+		<id name="qs_id" column="qs_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="type" length="20" type="java.lang.String"></property>
+		<property name="qs_content" length="200" type="java.lang.String"></property>
+		<property name="qs_answer1" length="200" type="java.lang.String"></property>
+		<property name="qs_answer2" length="200" type="java.lang.String"></property>
+		<property name="qs_answer3" length="200" type="java.lang.String"></property>
+		<property name="qs_answer4" length="200" type="java.lang.String"></property>
+		<property name="answerA" length="10" type="java.lang.Integer"></property>
+		<property name="answerB" length="10" type="java.lang.Integer"></property>
+		<property name="answerC" length="10" type="java.lang.Integer"></property>
+		<property name="answerD" length="10" type="java.lang.Integer"></property>
+		<many-to-one name="question" class="question.domain.Question">
+			<column name="q_id"></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

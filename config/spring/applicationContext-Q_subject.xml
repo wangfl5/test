@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="Q_subjectDao" class="question.Dao.Impl.Q_subjectDaoImpl">
+		<property name="hibernateTemplate">
+  			<ref bean="hibernateTemplate"/>
+  		</property>
+	</bean>
+	<bean id="Q_subjectService" class="question.Service.Impl.Q_subjectServiceImpl">
+		<property name="commonDao">
+			<ref bean="Q_subjectDao" />
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+    <!-- c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/exam?useUnicode=true&amp;characterEncoding=utf8"/>
+		<property name="user" value="root" />
+		<property name="password" value="123456" />
+		<!--连接池中保留的最小连接数。-->
+		<property name="minPoolSize" value="5" />
+	
+		<!--连接池中保留的最大连接数-->
+		<property name="maxPoolSize" value="30" />
+	
+		<!--初始化时获取的连接数-->
+		<property name="initialPoolSize" value="10"/>
+	
+		<!--最大空闲时间,10秒内未使用则连接被丢弃。若为0则永不丢弃-->
+		<property name="maxIdleTime" value="10"/>
+	
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数-->
+		<property name="acquireIncrement" value="5" />
+
+		<property name="maxStatements" value="0" />
+	
+		<!--每60秒检查所有连接池中的空闲连接-->
+		<property name="idleConnectionTestPeriod" value="60" />
+	
+		<!--定义在从数据库获取新连接失败后重复尝试的次数-->
+		<property name="acquireRetryAttempts" value="30" />
+	
+		<!--尝试获取连接失败后该数据源将申明已断开并永久关闭-->
+		<property name="breakAfterAcquireFailure" value="true" />
+    </bean>
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource"></property>
+    	<property name="configLocation">
+  			<value>classpath:hibernate/hibernate.cfg.xml</value>
+  		</property>
+    </bean>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<tx:advice transaction-manager="transactionManager" id="tx">
+		<tx:attributes>
+			<tx:method name="save*" read-only="false"/>
+			<tx:method name="update*" read-only="false"/>
+			<tx:method name="delete*" read-only="false"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+    <aop:config>
+		<aop:pointcut 
+			expression="execution(* *.Service.Impl.*.*(..))" 
+			id="perform"/>
+		<aop:advisor advice-ref="tx" pointcut-ref="perform"/>
+	</aop:config>
+    
+</beans>

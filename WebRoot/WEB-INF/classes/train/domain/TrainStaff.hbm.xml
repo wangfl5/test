@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="train.domain.TrainStaff" table="trainstaff">
+		<id name="trainstaff_id" column="trainstaff_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="train_id" column="train_id" ></property>
+		<property name="Staff_id" column="Staff_id" ></property>
+		<property name="Staff_name" column="Staff_name" length="20" type="java.lang.String"></property>
+		
+		
+	</class>
+</hibernate-mapping>

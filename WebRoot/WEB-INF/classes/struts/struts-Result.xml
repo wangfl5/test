@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+       
+<struts>
+
+	<package name="Result" namespace="/" extends="my-default">
+	
+	<action name="queryAllResult" class="ResultAction" method="queryResultBypage">
+		<result>page_Admin/exam/resultManage.jsp</result>
+	</action>
+	
+	<action name="saveResult" class="ResultAction" method="saveResult">
+		<result type="chain">queryMyPaper</result>
+	</action>
+	<action name="queryMyResult" class="ResultAction" method="queryMyResult">
+		<result>page_Staff/Myresult.jsp</result>
+	</action>
+	<action name="query_result_detail" class="ResultAction" method="query_result_detail">
+		<result>page_Staff/resultdetail.jsp</result>
+	</action>
+	<action name="deleteResult" class="ResultAction" method="deleteResult">
+		<result type="chain">queryAllResult</result>
+	</action>
+	</package>
+</struts>

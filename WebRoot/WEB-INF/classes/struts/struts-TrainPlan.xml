@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+       
+<struts>
+	
+	<package name="TrainPlan" namespace="/" extends="my-default">
+	<action name="querytrain" class="TrainPlanAction" method="queryTrainBypage">
+		<result>page_Admin/train/TrainPlanManage.jsp</result>
+	</action>
+	<action name="deleteTrain" class="TrainPlanAction" method="deleteTrain">
+		<result type="chain">querytrain</result>
+	</action>
+	<action name="query_train_staff" class="TrainStaffAction" method="querytrainStaff">
+		<result>page_Admin/train/TrainStaff.jsp</result>
+	</action>
+	<action name="Newtrain" class="StaffManageAction" method="queryStaffAll">
+		<result>page_Admin/train/Newtrain.jsp</result>
+	</action>
+	<action name="Savetrain" class="TrainStaffAction" method="Newtrain">
+		<result type="chain">querytrain</result>
+		<result name="input">page_Admin/train/Newtrain.jsp</result>
+	</action>
+	<action name="querymytrain" class="TrainStaffAction" method="querymytrain">
+		<result>/page_Staff/Mytrain.jsp</result>
+	</action>
+	<action name="downloadfile" class="TrainStaffAction" method="downloadfile">
+		<result type="stream">
+				<!-- 指定动作类中的输入流的属性名 -->
+				<param name="inputName">inputStream</param>
+				<!-- 通知浏览器以下载的方式打开  获取文件名是OGNL表达式，就是调用动作类中的getFileName方法 -->
+				<param name="contentDisposition">attachment;filename=${@java.net.URLEncoder@encode(fileName,'UTF-8')}</param>
+				<!-- MIME类型 -->
+				<param name="contentType">application/octet-stream</param>
+		</result>
+	</action>
+	</package>
+</struts>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="exam.domain.Subject" table="subject">
+		<id name="s_id" column="s_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="type" length="20" type="java.lang.String"></property>
+		<property name="kinds" length="20" type="java.lang.String"></property>
+		<property name="s_content" length="200" type="java.lang.String"></property>
+		<property name="s_answer1" length="200" type="java.lang.String"></property>
+		<property name="s_answer2" length="200" type="java.lang.String"></property>
+		<property name="s_answer3" length="200" type="java.lang.String"></property>
+		<property name="s_answer4" length="200" type="java.lang.String"></property>
+		<property name="s_standard" length="200" type="java.lang.String"></property>
+		<property name="s_value" length="4" type="integer"></property>
+	</class>
+</hibernate-mapping>

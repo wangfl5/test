@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+       
+<struts>
+	<package name="my-default" namespace="/" extends="struts-default">
+		<interceptors>  
+            <interceptor name="loginInteceptor" class="utils.LoginInterceptor" />  
+            <interceptor-stack name="loginStack">   
+                   <interceptor-ref name="defaultStack"></interceptor-ref>  
+                   <interceptor-ref name="loginInteceptor">  
+                       <param name="excludeMethods">getStaffbycondition,doexecute</param>  
+                   </interceptor-ref> 
+            </interceptor-stack>  
+		</interceptors>  
+		<default-interceptor-ref name="loginStack" /> 
+		<global-results>
+         	<result name="login">login.jsp</result>
+    	</global-results>
+	</package>
+</struts>

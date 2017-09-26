@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="exam.domain.Paperdetail" table="paperdetail">
+		<id name="paperdetail_id" column="paperdetail_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="s_id" length="10" type="integer"></property>
+		<many-to-one name="paper" class="exam.domain.Paper">
+			<column name="p_id"></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

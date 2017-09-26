@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="question.domain.Question" table="question">
+		<id name="q_id" column="q_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="q_name" length="40" type="java.lang.String"></property>
+		<property name="q_starttime" length="40" type="java.sql.Date"></property>
+		<property name="q_endtime" length="40" type="java.sql.Date"></property>
+		<property name="set_id" length="11" type="java.lang.Integer"></property>
+		<set name="q_subject" cascade="all" inverse="false" lazy="false" order-by="qs_id asc">
+		<key>
+		<column name="q_id"></column>	
+		</key>
+		<one-to-many class="question.domain.Q_subject"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="QuestionDao" class="question.Dao.Impl.questionDaoImpl">
+		<property name="hibernateTemplate">
+  			<ref bean="hibernateTemplate"/>
+  		</property>
+	</bean>
+	<bean id="QuestionService" class="question.Service.Impl.questionServiceImpl">
+		<property name="commonDao">
+			<ref bean="QuestionDao" />
+		</property>
+		<property name="questiondao">
+			<ref bean="QuestionDao"/>
+		</property>
+	</bean>
+	
+	<bean id="QuestionAction" class="question.action.questionAction">
+		<property name="questionservice">
+			<ref bean="QuestionService"/>
+		</property>
+		<property name="q_subjectservice">
+			<ref bean="Q_subjectService"/>
+		</property>	
+		<property name="q_statisticservice">
+			<ref bean="Q_StatisticService"/>
+		</property>	
+	</bean>
+</beans>

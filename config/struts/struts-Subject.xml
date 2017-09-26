@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+       
+<struts>
+
+	<package name="Subject" namespace="/" extends="my-default">
+	
+	<action name="querysubject" class="SubjectAction" method="querySubjectBypage">
+		<result>page_Admin/exam/subjectManage.jsp</result>
+	</action>
+	<action name="savesingle" class="SubjectAction" method="savesingle">
+		<result type="chain">querysubject</result>
+	</action>
+	<action name="savemulti" class="SubjectAction" method="savemulti">
+		<result type="chain">querysubject</result>
+	</action>
+	<action name="saveblank" class="SubjectAction" method="saveblank">
+		<result type="chain">querysubject</result>
+	</action>
+	<action name="query_subject_content" class="SubjectAction" method="query_subject_content">
+		<result>page_Admin/exam/subjectContent.jsp</result>
+	</action>
+	<action name="deletesubject" class="SubjectAction" method="deletesubject">
+		<result type="chain">querysubject</result>
+	</action>
+	<action name="updatesubject" class="SubjectAction" method="updatesubject">
+		<result type="chain">querysubject</result>
+	</action>
+	</package>
+</struts>

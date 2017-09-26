@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="exam.domain.Result" table="result">
+		<id name="r_id" column="r_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="staff_id" type="integer"></property>
+		<property name="p_id" type="integer"></property>
+		<property name="passvalue" type="integer"></property>
+		<property name="totalvalue" type="integer"></property>
+		<set name="resultdetail" cascade="all" inverse="false" lazy="false" order-by="s_id">
+		<key>
+		<column name="r_id"></column>	
+		</key>
+		<one-to-many class="exam.domain.Resultdetail"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="train.domain.TrainPlan" table="trainplan">
+		<id name="train_id" column="train_id" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="train_title" length="150" type="java.lang.String"></property>
+		<property name="train_time" length="40" type="java.util.Date"></property>
+		<property name="train_place" length="50" type="java.lang.String"></property>
+		<property name="file" length="20" type="java.lang.String"></property>
+		<property name="set_id" length="11" type="java.lang.Integer"></property>
+		<set name="trainstaff" cascade="delete" inverse="false">
+		<key>
+		<column name="train_id"></column>	
+		</key>
+		<one-to-many class="train.domain.TrainStaff"/>
+</set>
+	</class>
+</hibernate-mapping>
